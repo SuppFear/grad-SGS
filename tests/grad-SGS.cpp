@@ -7,7 +7,7 @@ int main(){
     std::vector<std::size_t> r = {0, 2, 3, 5};
     CSR_Matrix a{v, c, r};
     std::vector<double> b = {1., 1., 1.};
-    std::vector<double> res = sym_gauss_seidel(a, x0, b, 100, 0.001);
+    std::vector<double> res = sym_gauss_seidel(a, x0, b, 1000, 0.001);
     //std::vector<double> res = jacobi(a, x0, b, 0.25, 100, 0.001);
     //std::vector<double> res = grad_desc(a, x0, b, 100, 0.00001);
     std::cout<<res[0]<<" "<<res[1]<<" "<<res[2];

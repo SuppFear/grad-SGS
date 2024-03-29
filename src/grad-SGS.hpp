@@ -37,16 +37,16 @@ std::vector<double> sym_gauss_seidel(const CSR_Matrix &A, std::vector<double> &x
                     tmp[m] += A(m, k) * x[k];
                 }
             }
-            tmp[m] = (b[m] - tmp[m]) / A(m, m);
+            x[m] = (b[m] - tmp[m]) / A(m, m);
         }
         for(int m = b.size() - 1; m >= 0; m--){
-            x[m] = 0;
+            tmp[m] = 0;
             for(size_t k = 0; k < b.size(); k++){
                 if (m != k){
-                    x[m] += A(m, k) * tmp[k];
+                    tmp[m] += A(m, k) * x[k];
                 }
             }
-            x[m] = (b[m] - x[m]) / A(m, m);
+            x[m] = (b[m] - tmp[m]) / A(m, m);
         }
         diff = 0;
         for(size_t j = 0; j < b.size(); j++){
